@@ -80,7 +80,11 @@ class Turn():
                 temp_list[1] = [self.parse_card(played_card)]
                 next_player = activity.contents["next_player"]
                 index = players.index(next_player)
-                temp_list[index+2] = sorted([self.parse_card(a) for a in activity.contents["card_of_player"]])
+                for i in range(4):
+                    if i == index:
+                        temp_list[i+2] = sorted([self.parse_card(a) for a in activity.contents["card_of_player"]])
+                    else:
+                        temp_list[i+2] = activity.contents["number_card_of_player"][players[i]]
                 if not activity.contents["turn_right"]:
                     temp_list[6] = ["R"]
 

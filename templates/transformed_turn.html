@@ -72,6 +72,7 @@
                 <td>
                 {% endif %}
                     <!-- <div class="flex"> -->
+                        {% if res[i] is iterable %}
                         {% for r in res[i] %}
                         {% if r.__class__.__name__ == 'list' %}
                             <div class="card {{r[0]}}">{{r[1]}}</div>
@@ -79,6 +80,9 @@
                             <div class="clear_box">{{r}}</div>
                         {% endif %}
                         {% endfor %}
+                        {% else %}
+                        number_card: {{res[i]}}
+                        {% endif %}
                     <!-- </div> -->
                 </td>
                 {% endfor %}
